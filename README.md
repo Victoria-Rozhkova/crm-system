@@ -1,24 +1,28 @@
-# crm-system
+# CRM system
 
-## Project setup
+Приложение, которое умеет считать расходы и доходы пользователя.
+
+* В приложении реализованы страницы:
+
+  * Счет
+  * История
+  * Планирование
+  * Новая запись
+  * Категории
+  * Профиль
+  * Авторизация
+  * Регистрация
+
+* Создана навигация при помощи Vue-router
+* Реализовано плавное скрытие и открытие левого меню
+* Динамически отображается текущая дата и время
+
+## Первый запуск
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
