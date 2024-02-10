@@ -1,9 +1,14 @@
 <template>
-  <form class="card auth-card">
+  <form class="card auth-card" @submit.prevent="onSubmit">
     <div class="card-content">
       <span class="card-title">Домашняя бухгалтерия</span>
       <div class="input-field">
-        <input id="email" type="text" v-model.trim="email" />
+        <input
+          id="email"
+          type="text"
+          v-model.trim="email"
+          :class="{ invalid: v$.email.$error }"
+        />
         <label for="email">Email</label>
         <small class="helper-text invalid" v-if="v$.email.$error">{{
           v$.email.$errors[0].$message
@@ -13,7 +18,7 @@
         <input
           id="password"
           type="password"
-          class="validate"
+          :class="{ invalid: v$.password.$error }"
           v-model.trim="password"
         />
         <label for="password">Пароль</label>
@@ -22,9 +27,17 @@
         }}</small>
       </div>
       <div class="input-field">
-        <input id="name" type="text" class="validate" />
+        <input
+          id="name"
+          type="text"
+          class="validate"
+          v-model.trim="name"
+          :class="{ invalid: v$.name.$error }"
+        />
         <label for="name">Имя</label>
-        <small class="helper-text invalid">Name</small>
+        <small class="helper-text invalid" v-if="v$.name.$error">{{
+          v$.name.$errors[0].$message
+        }}</small>
       </div>
       <p>
         <label>
@@ -51,13 +64,14 @@
 
 <script>
 import { useVuelidate } from "@vuelidate/core";
-import { required, email, minLength } from "@vuelidate/validators";
+import { required, email, minLength, helpers } from "@vuelidate/validators";
 export default {
   name: "Register",
   data() {
     return {
       email: "",
       password: "",
+      name: "",
     };
   },
   setup() {
@@ -65,14 +79,37 @@ export default {
   },
   validations() {
     return {
-      email: { email, required },
-      password: { required, minLength: minLength(6) },
+      email: {
+        email: helpers.withMessage("Введите корректный Email", email),
+        required: helpers.withMessage("Введите email", required),
+      },
+      password: {
+        required: helpers.withMessage("Введите пароль", required),
+        minLength: helpers.withMessage(
+          ({ $params }) =>
+            `Пароль должен быть не менее ${$params.min} символов`,
+          minLength(6)
+        ),
+      },
+      name: {
+        required: helpers.withMessage("Введите имя", required),
+        minLength: helpers.withMessage(
+          ({ $params }) => `Имя должно быть не менее ${$params.min} символов`,
+          minLength(2)
+        ),
+      },
     };
   },
   methods: {
     onSubmit() {
       this.v$.$validate();
       if (!this.v$.$error) {
+        const body = {
+          email: this.email,
+          password: this.password,
+          name: this.name,
+        };
+        console.log(body);
         this.$router.push("/");
       }
     },

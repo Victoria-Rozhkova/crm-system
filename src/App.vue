@@ -3,6 +3,7 @@
     <router-view />
   </component>
 </template>
+
 <script>
 import AuthLayout from "./layouts/AuthLayout.vue";
 import MainLayout from "./layouts/MainLayout.vue";

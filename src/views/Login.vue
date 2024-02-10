@@ -6,7 +6,7 @@
         <input
           id="email"
           type="text"
-          class="validate"
+          :class="{ invalid: v$.email.$error }"
           v-model.trim="email"
         />
         <label for="email">Email</label>
@@ -18,7 +18,7 @@
         <input
           id="password"
           type="password"
-          class="validate"
+          :class="{ invalid: v$.password.$error }"
           v-model.trim="password"
         />
         <label for="password">Пароль</label>
@@ -44,7 +44,8 @@
 
 <script>
 import { useVuelidate } from "@vuelidate/core";
-import { required, email, minLength } from "@vuelidate/validators";
+import { required, email, minLength, helpers } from "@vuelidate/validators";
+
 export default {
   name: "Login",
   data() {
@@ -58,14 +59,26 @@ export default {
   },
   validations() {
     return {
-      email: { email, required },
-      password: { required, minLength: minLength(6) },
+      email: {
+        email: helpers.withMessage("Введите корректный Email", email),
+        required: helpers.withMessage("Введите email", required),
+      },
+      password: {
+        required: helpers.withMessage("Введите пароль", required),
+        minLength: helpers.withMessage(
+          ({ $params }) =>
+            `Пароль должен быть не менее ${$params.min} символов`,
+          minLength(6)
+        ),
+      },
     };
   },
   methods: {
     onSubmit() {
       this.v$.$validate();
       if (!this.v$.$error) {
+        const body = { email: this.email, password: this.password };
+        console.log(body);
         this.$router.push("/");
       }
     },

@@ -42,7 +42,14 @@
 export default {
   name: "Navbar",
   data: () => ({
-    date: new Date(),
+    date:
+      new Date().toLocaleDateString("ru-RU", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }) +
+      " " +
+      new Date().toLocaleTimeString(),
     interval: null,
     dropdown: null,
   }),
