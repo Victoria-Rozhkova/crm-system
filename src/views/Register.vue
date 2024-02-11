@@ -41,10 +41,13 @@
       </div>
       <p>
         <label>
-          <input type="checkbox" />
+          <input type="checkbox" v-model="agree" />
           <span>С правилами согласен</span>
         </label>
       </p>
+      <small class="helper-text invalid" v-if="v$.agree.$error">{{
+        v$.agree.$errors[0].$message
+      }}</small>
     </div>
     <div class="card-action">
       <div>
@@ -65,6 +68,7 @@
 <script>
 import { useVuelidate } from "@vuelidate/core";
 import { required, email, minLength, helpers } from "@vuelidate/validators";
+
 export default {
   name: "Register",
   data() {
@@ -72,6 +76,7 @@ export default {
       email: "",
       password: "",
       name: "",
+      agree: false,
     };
   },
   setup() {
@@ -96,6 +101,12 @@ export default {
         minLength: helpers.withMessage(
           ({ $params }) => `Имя должно быть не менее ${$params.min} символов`,
           minLength(2)
+        ),
+      },
+      agree: {
+        checked: helpers.withMessage(
+          "Необходимо согласиться с правилами",
+          (value) => value
         ),
       },
     };
