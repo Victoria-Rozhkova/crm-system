@@ -18,6 +18,8 @@
 - Динамически отображается текущая дата и время
 - Реализована валидация форм на странице логина и регистрации с [Vuelidate](https://vuelidate-next.netlify.app/)
 - Добавлены всплывающие сообщения о действиях и об ошибке с помощью Toasts в [materializecss](https://materializecss.com/)
+- Реализована авторизация и регистрация с [firebase](https://firebase.google.com/)
+- Использовано хранилище [Vuex](https://vuex.vuejs.org/)
 
 ## Первый запуск
 

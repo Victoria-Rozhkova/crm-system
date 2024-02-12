@@ -112,7 +112,7 @@ export default {
     };
   },
   methods: {
-    onSubmit() {
+    async onSubmit() {
       this.v$.$validate();
       if (!this.v$.$error) {
         const body = {
@@ -120,8 +120,11 @@ export default {
           password: this.password,
           name: this.name,
         };
-        console.log(body);
-        this.$router.push("/");
+
+        try {
+          await this.$store.dispatch("register", body);
+          this.$router.push("/");
+        } catch {}
       }
     },
   },

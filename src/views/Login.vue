@@ -79,12 +79,14 @@ export default {
       this.$message(messages[this.$route.query.message]);
   },
   methods: {
-    onSubmit() {
+    async onSubmit() {
       this.v$.$validate();
       if (!this.v$.$error) {
         const body = { email: this.email, password: this.password };
-        console.log(body);
-        this.$router.push("/");
+        try {
+          await this.$store.dispatch("login", body);
+          this.$router.push("/");
+        } catch {}
       }
     },
   },
