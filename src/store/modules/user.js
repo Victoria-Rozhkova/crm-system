@@ -1,5 +1,6 @@
-import { ref, child, get } from "firebase/database";
-import { database } from "@/main";
+import { child, get, ref } from "firebase/database";
+import { set } from "firebase/database";
+import { auth, database } from "@/main";
 
 export default {
   state: { user: {} },
@@ -12,6 +13,18 @@ export default {
     },
   },
   actions: {
+    getUid() {
+      const user = auth.currentUser;
+      return user ? user.uid : null;
+    },
+    async writeUserData({}, { uid, name, email }) {
+      set(ref(database, "users/" + uid + "/info"), {
+        id: uid,
+        bill: 0,
+        name,
+        email,
+      });
+    },
     async getUser({ dispatch, commit }) {
       const uid = await dispatch("getUid");
 

@@ -1,5 +1,6 @@
 import auth from "./modules/auth";
 import user from "./modules/user";
+import category from "./modules/category";
 
 export default {
   namespaced: true,
@@ -26,5 +27,6 @@ export default {
   modules: {
     auth,
     user,
+    category,
   },
 };

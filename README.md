@@ -13,14 +13,21 @@
   - Авторизация
   - Регистрация
 
+- А также два лэйаута:
+
+  - Для страниц авторизации
+  - Основной, для авторизованного пользователя
+
 - Создана навигация при помощи [Vue-router](https://router.vuejs.org/)
 - Реализовано плавное скрытие и открытие левого меню
 - Динамически отображается текущая дата и время
-- Реализована валидация форм на странице логина и регистрации с [Vuelidate](https://vuelidate-next.netlify.app/)
-- Добавлены всплывающие сообщения о действиях и об ошибке с помощью Toasts в [materializecss](https://materializecss.com/)
-- Реализована авторизация и регистрация с [firebase](https://firebase.google.com/)
-- Использовано хранилище [Vuex](https://vuex.vuejs.org/)
+- Реализована валидация форм с [Vuelidate](https://vuelidate-next.netlify.app/)
+- Добавлены всплывающие сообщения о действиях и об ошибке с помощью Toasts из [materializecss](https://materializecss.com/)
+- В качестве сервера и базы данных используется [firebase](https://firebase.google.com/)
+- В качестве хранилища используется [Vuex](https://vuex.vuejs.org/)
 - Реализован актуальный курс валют из [open api](https://raw.githubusercontent.com/fawazahmed0/currency-api/1/latest/currencies/rub.json)
+- Реализована авторизация, регистрация, сохранение сессии и выход из аккаунта
+- Можно добавлять, редактировать категории
 
 ## Первый запуск
 

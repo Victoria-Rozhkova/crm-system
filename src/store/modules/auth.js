@@ -3,8 +3,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { ref, set } from "firebase/database";
-import { auth, database } from "../../main";
+import { auth } from "@/main";
 
 export default {
   actions: {
@@ -19,19 +18,7 @@ export default {
         throw new Error(error);
       }
     },
-    getUid() {
-      const user = auth.currentUser;
-      return user ? user.uid : null;
-    },
-    async writeUserData({}, { uid, name, email }) {
-      set(ref(database, "users/" + uid + "/info"), {
-        id: uid,
-        bill: 0,
-        name,
-        email,
-      });
-    },
-    async login({ dispatch, commit }, { email, password }) {
+    async login({ commit }, { email, password }) {
       try {
         const res = await signInWithEmailAndPassword(auth, email, password);
         console.log(res);

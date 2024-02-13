@@ -21,6 +21,8 @@
 <script>
 import Navbar from "@/components/App/Navbar.vue";
 import Sidebar from "@/components/App/Sidebar.vue";
+import messages from "@/utils/messages";
+
 export default {
   name: "MainLayout",
   components: { Navbar, Sidebar },
@@ -28,6 +30,17 @@ export default {
     loading: true,
     isOpen: true,
   }),
+  computed: {
+    error() {
+      return this.$store.getters.error;
+    },
+  },
+  watch: {
+    error(fbError) {
+      console.log(fbError.code);
+      this.$error(messages[fbError.code] || messages.error);
+    },
+  },
   async mounted() {
     if (!Object.keys(this.$store.getters.user).length) {
       await this.$store.dispatch("getUser");
