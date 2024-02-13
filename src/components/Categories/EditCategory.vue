@@ -19,12 +19,12 @@
         </div>
         <div class="input-field">
           <input
-            id="name"
+            id="title"
             type="text"
             v-model="title"
             :class="{ invalid: v$.title.$error }"
           />
-          <label for="name">Название</label>
+          <label for="title">Название</label>
           <small class="helper-text invalid" v-if="v$.title.$error">{{
             v$.title.$errors[0].$message
           }}</small>

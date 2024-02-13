@@ -1,4 +1,4 @@
-import { child, get, ref } from "firebase/database";
+import { child, get, getDatabase, ref } from "firebase/database";
 import { set } from "firebase/database";
 import { auth, database } from "@/main";
 
@@ -17,13 +17,18 @@ export default {
       const user = auth.currentUser;
       return user ? user.uid : null;
     },
-    async writeUserData({}, { uid, name, email }) {
-      set(ref(database, "users/" + uid + "/info"), {
-        id: uid,
-        bill: 0,
-        name,
-        email,
-      });
+    async writeUserData({ commit }, { uid, name, email }) {
+      try {
+        set(ref(database, "users/" + uid + "/info"), {
+          id: uid,
+          bill: 0,
+          name,
+          email,
+        });
+      } catch (error) {
+        commit("setError", error);
+        throw new Error(error);
+      }
     },
     async getUser({ dispatch, commit }) {
       const uid = await dispatch("getUid");
@@ -35,6 +40,18 @@ export default {
         if (snapshot.exists()) {
           commit("setUser", snapshot.val());
         }
+      } catch (error) {
+        commit("setError", error);
+        throw new Error(error);
+      }
+    },
+    async updateUser({ dispatch, commit, getters }, updatedFields) {
+      try {
+        const uid = await dispatch("getUid");
+        const db = getDatabase();
+        const updatedData = { ...getters.user, ...updatedFields };
+        set(ref(db, `users/${uid}/info`), updatedData);
+        commit("setUser", updatedData);
       } catch (error) {
         commit("setError", error);
         throw new Error(error);

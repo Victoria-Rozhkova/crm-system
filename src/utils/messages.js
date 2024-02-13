@@ -5,4 +5,5 @@ export default {
   "auth/email-already-in-use": "Пользователь уже существует",
   "add-category": "Категория успешно добавлена",
   "edit-category": "Категория успешно обновлена",
+  "add-record": "Запись успешно добавлена",
 };

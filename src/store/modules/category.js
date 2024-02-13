@@ -24,7 +24,7 @@ export default {
       try {
         const uid = await dispatch("getUid");
         const categoryId = v4();
-        await set(ref(database, `users/${uid}/categories/${categoryId}`), {
+        set(ref(database, `users/${uid}/categories/${categoryId}`), {
           title,
           limit,
         });

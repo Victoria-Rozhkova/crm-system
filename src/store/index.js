@@ -1,6 +1,7 @@
 import auth from "./modules/auth";
 import user from "./modules/user";
 import category from "./modules/category";
+import record from "./modules/record";
 
 export default {
   namespaced: true,
@@ -28,5 +29,6 @@ export default {
     auth,
     user,
     category,
+    record,
   },
 };
