@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="app-main-layout">
+    <Loader v-if="loading" />
+    <div v-else class="app-main-layout">
       <Navbar @open="open" />
       <Sidebar :isOpen="isOpen" />
       <main class="app-content" :class="{ full: !isOpen }">
@@ -18,14 +19,21 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
-import Sidebar from "@/components/Sidebar.vue";
+import Navbar from "@/components/App/Navbar.vue";
+import Sidebar from "@/components/App/Sidebar.vue";
 export default {
   name: "MainLayout",
   components: { Navbar, Sidebar },
   data: () => ({
+    loading: true,
     isOpen: true,
   }),
+  async mounted() {
+    if (!Object.keys(this.$store.getters.user).length) {
+      await this.$store.dispatch("getUser");
+    }
+    this.loading = false;
+  },
   methods: {
     open() {
       this.isOpen = !this.isOpen;

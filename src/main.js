@@ -8,6 +8,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import messagePlugin from "./utils/message.plugin";
+import Loader from "@/components/App/Loader";
 import "materialize-css/dist/js/materialize.min.js";
 
 const firebaseConfig = {
@@ -33,6 +34,7 @@ onAuthStateChanged(auth, () => {
 
     app.use(messagePlugin);
     app.use(router);
+    app.component("Loader", Loader);
     app.use(createStore(store));
 
     app.mount("#app");

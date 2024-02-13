@@ -15,7 +15,7 @@
             data-target="dropdown"
             ref="dropdown"
           >
-            USER NAME
+            {{ name }}
             <i class="material-icons right">arrow_drop_down</i>
           </a>
 
@@ -39,17 +39,12 @@
 </template>
 
 <script>
+import { getDateFormat } from "@/utils/date";
+
 export default {
   name: "Navbar",
   data: () => ({
-    date:
-      new Date().toLocaleDateString("ru-RU", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      }) +
-      " " +
-      new Date().toLocaleTimeString(),
+    date: getDateFormat(new Date(), "datetime"),
     interval: null,
     dropdown: null,
   }),
@@ -59,13 +54,14 @@ export default {
       this.$router.push("/login?message=logout");
     },
   },
+  computed: {
+    name() {
+      return this.$store.getters.user.name;
+    },
+  },
   mounted() {
-    const options = { day: "numeric", month: "long", year: "numeric" };
     this.interval = setInterval(() => {
-      this.date =
-        new Date().toLocaleDateString("ru-RU", options) +
-        " " +
-        new Date().toLocaleTimeString();
+      this.date = getDateFormat(new Date(), "datetime");
     }, 1000);
     this.dropdown = window.M.Dropdown.init(this.$refs.dropdown, {
       constrainWidth: false,

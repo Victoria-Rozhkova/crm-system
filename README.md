@@ -20,6 +20,7 @@
 - Добавлены всплывающие сообщения о действиях и об ошибке с помощью Toasts в [materializecss](https://materializecss.com/)
 - Реализована авторизация и регистрация с [firebase](https://firebase.google.com/)
 - Использовано хранилище [Vuex](https://vuex.vuejs.org/)
+- Реализован актуальный курс валют из [open api](https://raw.githubusercontent.com/fawazahmed0/currency-api/1/latest/currencies/rub.json)
 
 ## Первый запуск
 

@@ -40,8 +40,9 @@ export default {
         throw new Error(error);
       }
     },
-    async logout() {
+    async logout({ commit }) {
       await signOut(auth);
+      commit("clearUser");
     },
   },
 };
