@@ -37,7 +37,6 @@ export default {
   methods: {
     async getCurrency() {
       this.currency = await this.$store.dispatch("getCurrency");
-      console.log(this.currency);
       this.loading = false;
     },
     refresh() {

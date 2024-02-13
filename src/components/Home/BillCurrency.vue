@@ -22,9 +22,7 @@ export default {
   },
   computed: {
     base() {
-      return (
-        this.$store.getters.user.bill / this.rates.rub / this.rates.eur || 0
-      );
+      return this.$store.getters.user.bill || 0;
     },
   },
   methods: {

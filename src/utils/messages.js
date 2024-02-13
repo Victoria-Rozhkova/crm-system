@@ -4,4 +4,5 @@ export default {
   "auth/invalid-credential": "Логин или пароль введены неверно",
   "auth/email-already-in-use": "Пользователь уже существует",
   "add-category": "Категория успешно добавлена",
+  "edit-category": "Категория успешно обновлена",
 };

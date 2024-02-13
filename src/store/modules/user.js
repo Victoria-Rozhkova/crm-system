@@ -34,10 +34,11 @@ export default {
         const snapshot = await get(child(dbRef, `users/${uid}/info`));
         if (snapshot.exists()) {
           commit("setUser", snapshot.val());
-        } else {
-          console.log("No data available");
         }
-      } catch (error) {}
+      } catch (error) {
+        commit("setError", error);
+        throw new Error(error);
+      }
     },
   },
   getters: {

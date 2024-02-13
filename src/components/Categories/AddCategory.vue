@@ -77,7 +77,6 @@ export default {
         const body = { title: this.title, limit: this.limit };
         try {
           const category = await this.$store.dispatch("addCategory", body);
-          console.log(category);
           this.clearForm();
           this.$message(messages["add-category"]);
           this.$emit("add", category);
