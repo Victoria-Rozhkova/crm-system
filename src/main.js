@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import { createStore } from "vuex";
+import Paginate from "vuejs-paginate-next";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -37,6 +38,7 @@ onAuthStateChanged(auth, () => {
     app.use(messagePlugin);
     app.use(router);
     app.component("Loader", Loader);
+    app.component("Paginate", Paginate);
     app.use(createStore(store));
 
     app.mount("#app");

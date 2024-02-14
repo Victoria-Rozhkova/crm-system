@@ -12,10 +12,12 @@
     "@vuelidate/validators": "^2.0.0",
     "core-js": "^3.6.5",
     "firebase": "^10.8.0",
+    "lodash": "^4.17.21",
     "materialize-css": "^1.0.0-rc.2",
     "uuid": "^9.0.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
+    "vuejs-paginate-next": "^1.0.2",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
