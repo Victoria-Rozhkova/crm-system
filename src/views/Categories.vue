@@ -13,7 +13,7 @@
           @edit="editCategory"
           :key="categories.length + update"
         />
-        <Empty v-else :text="'Категорий пока нет'" />
+        <p v-else class="center">Категорий пока нет</p>
       </div>
     </section>
   </div>
@@ -22,14 +22,12 @@
 <script>
 import AddCategory from "@/components/Categories/AddCategory.vue";
 import EditCategory from "@/components/Categories/EditCategory.vue";
-import Empty from "@/components/App/Empty.vue";
 
 export default {
   name: "Categories",
   components: {
     AddCategory,
     EditCategory,
-    Empty,
   },
   data() {
     return {

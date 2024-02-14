@@ -18,11 +18,12 @@
   - Для страниц авторизации
   - Основной, для авторизованного пользователя
 
-- Создана навигация при помощи [Vue-router](https://router.vuejs.org/)
+- Создана навигация и защита роутов при помощи [Vue-router](https://router.vuejs.org/)
 - Реализовано плавное скрытие и открытие левого меню
 - Динамически отображается текущая дата и время
 - Реализована валидация форм с [Vuelidate](https://vuelidate-next.netlify.app/)
-- Добавлены всплывающие сообщения о действиях и об ошибке с помощью Toasts из [materializecss](https://materializecss.com/)
+- Добавлены всплывающие сообщения о действиях и об ошибке с помощью [toasts](https://materializecss.com/toasts.html)
+- В качестве UI-библиотеки используется [materializecss](https://materializecss.com/)
 - В качестве сервера и базы данных используется [firebase](https://firebase.google.com/)
 - В качестве хранилища используется [Vuex](https://vuex.vuejs.org/)
 - Реализован актуальный курс валют из [open api](https://raw.githubusercontent.com/fawazahmed0/currency-api/1/latest/currencies/rub.json)
