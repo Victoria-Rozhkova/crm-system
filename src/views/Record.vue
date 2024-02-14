@@ -52,6 +52,7 @@
         <input
           id="amount"
           type="number"
+          step="any"
           v-model.number="amount"
           :class="{ invalid: v$.amount.$error }"
         />

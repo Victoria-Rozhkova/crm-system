@@ -4,11 +4,12 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getDatabase } from "firebase/database";
+import messagePlugin from "@/utils/message.plugin";
+import tooltipDirective from "@/directives/tooltip.directive.js";
+import Loader from "@/components/App/Loader";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import messagePlugin from "./utils/message.plugin";
-import Loader from "@/components/App/Loader";
 import "materialize-css/dist/js/materialize.min.js";
 
 const firebaseConfig = {
@@ -32,6 +33,7 @@ onAuthStateChanged(auth, () => {
   if (!app) {
     app = createApp(App);
 
+    app.directive("tooltip", tooltipDirective);
     app.use(messagePlugin);
     app.use(router);
     app.component("Loader", Loader);

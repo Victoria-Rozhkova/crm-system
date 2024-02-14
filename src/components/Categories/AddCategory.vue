@@ -23,6 +23,7 @@
           <input
             id="limit"
             type="number"
+            step="any"
             v-model.number="limit"
             :class="{ invalid: v$.limit.$error }"
           />
