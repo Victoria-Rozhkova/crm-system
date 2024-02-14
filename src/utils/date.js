@@ -6,7 +6,14 @@ export function getDateFormat(
 ) {
   let date = ``;
 
-  if (format.includes("dateshort")) {
+  if (format.includes("datedot")) {
+    date = new Date(value).toLocaleDateString("ru-RU", {
+      day: "numeric",
+      month: "numeric",
+      year: "numeric",
+      ...dateOptions,
+    });
+  } else if (format.includes("dateshort")) {
     date = new Date(value).toLocaleDateString("ru-RU", {
       day: "numeric",
       month: "long",

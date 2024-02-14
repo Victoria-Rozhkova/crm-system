@@ -20,6 +20,21 @@ export default {
         throw new Error(error);
       }
     },
+    async getCategoryById({ dispatch, commit }, id) {
+      const uid = await dispatch("getUid");
+      const dbRef = ref(database);
+      try {
+        const snapshot = await get(
+          child(dbRef, `users/${uid}/categories/${id}`)
+        );
+        if (snapshot.exists()) {
+          return { ...snapshot.val(), id };
+        }
+      } catch (error) {
+        commit("setError", error);
+        throw new Error(error);
+      }
+    },
     async addCategory({ dispatch, commit }, { title, limit }) {
       try {
         const uid = await dispatch("getUid");

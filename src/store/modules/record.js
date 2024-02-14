@@ -20,6 +20,19 @@ export default {
         throw new Error(error);
       }
     },
+    async getRecordById({ dispatch, commit }, id) {
+      const uid = await dispatch("getUid");
+      const dbRef = ref(database);
+      try {
+        const snapshot = await get(child(dbRef, `users/${uid}/records/${id}`));
+        if (snapshot.exists()) {
+          return { ...snapshot.val(), id };
+        }
+      } catch (error) {
+        commit("setError", error);
+        throw new Error(error);
+      }
+    },
     async addRecord({ dispatch, commit }, record) {
       try {
         const uid = await dispatch("getUid");

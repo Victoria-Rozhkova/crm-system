@@ -47,6 +47,13 @@ const routes = [
       import(/* webpackChunkName: "history" */ "../views/History.vue"),
   },
   {
+    path: "/detail/:id",
+    name: "detail",
+    meta: { layout: "main", auth: true },
+    component: () =>
+      import(/* webpackChunkName: "history" */ "../views/Detail.vue"),
+  },
+  {
     path: "/planning",
     name: "planning",
     meta: { layout: "main", auth: true },
@@ -66,6 +73,13 @@ const routes = [
     meta: { layout: "main", auth: true },
     component: () =>
       import(/* webpackChunkName: "record" */ "../views/Record.vue"),
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "not-found",
+    meta: { layout: "main", auth: true },
+    component: () =>
+      import(/* webpackChunkName: "record" */ "../views/NotFound.vue"),
   },
 ];
 
