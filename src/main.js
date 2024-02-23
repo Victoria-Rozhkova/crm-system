@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import { createStore } from "vuex";
 import Paginate from "vuejs-paginate-next";
+import { createI18n } from "vue-i18n";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -8,6 +9,8 @@ import { getDatabase } from "firebase/database";
 import messagePlugin from "@/utils/message.plugin";
 import tooltipDirective from "@/directives/tooltip.directive.js";
 import Loader from "@/components/App/Loader";
+import ru from "@/locales/ru.json";
+import en from "@/locales/en.json";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
@@ -30,6 +33,14 @@ export const database = getDatabase();
 
 let app;
 
+export const i18n = createI18n({
+  locale: localStorage.getItem("crm-locale") || "ru-RU",
+  messages: {
+    "ru-RU": ru,
+    "en-US": en,
+  },
+});
+
 onAuthStateChanged(auth, () => {
   if (!app) {
     app = createApp(App);
@@ -37,6 +48,7 @@ onAuthStateChanged(auth, () => {
     app.directive("tooltip", tooltipDirective);
     app.use(messagePlugin);
     app.use(router);
+    app.use(i18n);
     app.component("Loader", Loader);
     app.component("Paginate", Paginate);
     app.use(createStore(store));

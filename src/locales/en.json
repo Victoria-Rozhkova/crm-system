@@ -1,0 +1,114 @@
+{
+  "common": {
+    "newRecord": "Create a new record",
+    "back": "Back",
+    "next": "Next",
+    "noCategories": "No categories yet",
+    "addCategory": "Add a new category",
+    "noRecords": "No records yet",
+    "addRecord": "Add a record",
+    "income": "Income",
+    "outcome": "Outcome",
+    "404": "404 Page not found"
+  },
+  "profile": {
+    "title": "Profile",
+    "label": "Name",
+    "btnText": "Update"
+  },
+  "navbar": {
+    "dropdown": {
+      "profile": "Profile",
+      "logout": "Logout"
+    }
+  },
+  "sidebar": {
+    "bill": "Bill",
+    "history": "History",
+    "planning": "Planning",
+    "newRecord": "New record",
+    "categories": "Categories"
+  },
+  "bill": {
+    "title": "Bill",
+    "billCurrency": "Account in foreign currency",
+    "courseCurrency": {
+      "title": "Exchange Rates",
+      "currency": "Currency",
+      "course": "Course",
+      "date": "Date"
+    }
+  },
+  "history": {
+    "title": "Record history",
+    "chartLabel": "Expenses by category",
+    "table": {
+      "amount": "Amount",
+      "date": "Date",
+      "category": "Category",
+      "type": "Type",
+      "open": "Open",
+      "watchRecord": "Watch Record",
+      "income": "Income",
+      "outcome": "Outcome"
+    }
+  },
+  "planning": {
+    "title": "Planning",
+    "out": "out of",
+    "tooltipText": {
+      "excess": "Excess by",
+      "left": "Left"
+    }
+  },
+  "newRecord": {
+    "title": "New record",
+    "categoryLabel": "Select a category",
+    "amount": "Amount",
+    "description": "Description",
+    "btnText": "Create"
+  },
+  "categories": {
+    "title": "Categories",
+    "addCategory": {
+      "title": "Create",
+      "name": "Name",
+      "limit": "Limit",
+      "btnText": "Create"
+    },
+    "editCategory": {
+      "title": "Edit",
+      "categoryLabel": "Select a category",
+      "name": "Name",
+      "limit": "Limit",
+      "btnText": "Update"
+    }
+  },
+  "login": {
+    "title": "Home accounting",
+    "email": "Email",
+    "password": "Password",
+    "btnText": "Sign in",
+    "noAccount": "Don't have an account?",
+    "register": "Sign up"
+  },
+  "register": {
+    "title": "Home accounting",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "agree": "I agree with the rules",
+    "btnText": "Sign up",
+    "haveAccount": "Already have an account?",
+    "login": "Sign in!"
+  },
+  "detail": {
+    "error": "There is no such record :(",
+    "breadcrumb": {
+      "history": "History"
+    },
+    "description": "Description: ",
+    "amount": "Amount: ",
+    "category": "Category: "
+  }
+}

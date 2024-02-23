@@ -1,16 +1,16 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>История записей</h3>
+      <h3>{{ $t("history.title") }}</h3>
     </div>
 
     <div class="history-chart">
-      <PieChart v-bind="pieChartProps" />
+      <PieChart v-if="records.length" v-bind="pieChartProps" />
     </div>
     <Loader v-if="loading" />
     <div v-else-if="!records.length" class="center">
-      <p>Записей пока нет</p>
-      <router-link to="/record">Добавить запись</router-link>
+      <p>{{ $t("common.noRecords") }}</p>
+      <router-link to="/record">{{ $t("common.addRecord") }}</router-link>
     </div>
     <section v-else>
       <HistoryTable :records="items" />
@@ -18,8 +18,8 @@
         v-model="page"
         :page-count="pageCount"
         :click-handler="onChangePage"
-        :prev-text="'Назад'"
-        :next-text="'Вперед'"
+        :prev-text="$t('common.back')"
+        :next-text="$t('common.next')"
         :container-class="'pagination center'"
         :page-class="'waves-effect'"
       />
@@ -55,6 +55,7 @@ export default defineComponent({
   setup() {
     const dataValues = ref([]);
     const dataLabels = ref([]);
+    const chartLabel = ref("");
 
     const chartData = computed(() => ({
       labels: dataLabels.value,
@@ -67,7 +68,7 @@ export default defineComponent({
             "rgba(255, 206, 86, 0.2)",
             "rgba(75, 192, 192, 0.2)",
             "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
+            "rgba(15, 242, 201, 0.2)",
           ],
           borderColor: [
             "rgba(255, 99, 132, 1)",
@@ -75,7 +76,7 @@ export default defineComponent({
             "rgba(255, 206, 86, 1)",
             "rgba(75, 192, 192, 1)",
             "rgba(153, 102, 255, 1)",
-            "rgba(255, 159, 64, 1)",
+            "rgba(15, 242, 201,1)",
           ],
           borderWidth: 1,
         },
@@ -86,7 +87,7 @@ export default defineComponent({
       plugins: {
         title: {
           display: true,
-          text: "Расходы по категориям",
+          text: chartLabel.value,
         },
       },
     }));
@@ -106,6 +107,7 @@ export default defineComponent({
         }, 0);
       });
       dataLabels.value = categories.map((c) => c.title);
+      chartLabel.value = this.$t("history.chartLabel");
     }
 
     return {
@@ -127,7 +129,10 @@ export default defineComponent({
               (category) => category.id === record.categoryId
             ).title,
             typeClass: record.type === "income" ? "green" : "red",
-            typeText: record.type === "income" ? "Доход" : "Расход",
+            typeText:
+              record.type === "income"
+                ? this.$t("common.income")
+                : this.$t("common.outcome"),
           };
         })
       );

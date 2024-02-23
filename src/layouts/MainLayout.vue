@@ -12,7 +12,7 @@
       <div class="fixed-action-btn">
         <router-link
           to="/record"
-          v-tooltip="'Создать новую запись'"
+          v-tooltip="$t('common.newRecord')"
           class="btn-floating btn-large blue"
         >
           <i class="large material-icons">add</i>

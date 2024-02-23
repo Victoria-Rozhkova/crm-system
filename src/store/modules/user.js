@@ -1,6 +1,6 @@
 import { child, get, getDatabase, ref } from "firebase/database";
 import { set } from "firebase/database";
-import { auth, database } from "@/main";
+import { auth, database, i18n } from "@/main";
 
 export default {
   state: { user: {} },
@@ -24,6 +24,7 @@ export default {
           bill: 0,
           name,
           email,
+          locale: "ru-Ru",
         });
       } catch (error) {
         commit("setError", error);
@@ -39,6 +40,7 @@ export default {
         const snapshot = await get(child(dbRef, `users/${uid}/info`));
         if (snapshot.exists()) {
           commit("setUser", snapshot.val());
+          localStorage.setItem("crm-locale", snapshot.val().locale);
         }
       } catch (error) {
         commit("setError", error);
@@ -52,6 +54,10 @@ export default {
         const updatedData = { ...getters.user, ...updatedFields };
         set(ref(db, `users/${uid}/info`), updatedData);
         commit("setUser", updatedData);
+        if (updatedFields?.locale) {
+          i18n.locale = updatedFields.locale;
+          localStorage.setItem("crm-locale", updatedFields.locale);
+        }
       } catch (error) {
         commit("setError", error);
         throw new Error(error);

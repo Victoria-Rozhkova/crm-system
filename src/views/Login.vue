@@ -1,7 +1,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="onSubmit">
     <div class="card-content">
-      <span class="card-title">Домашняя бухгалтерия</span>
+      <span class="card-title">{{ $t("login.title") }}</span>
       <div class="input-field">
         <input
           id="email"
@@ -9,7 +9,7 @@
           :class="{ invalid: v$.email.$error }"
           v-model.trim="email"
         />
-        <label for="email">Email</label>
+        <label for="email">{{ $t("login.email") }}</label>
         <small class="helper-text invalid" v-if="v$.email.$error">{{
           v$.email.$errors[0].$message
         }}</small>
@@ -21,7 +21,7 @@
           :class="{ invalid: v$.password.$error }"
           v-model.trim="password"
         />
-        <label for="password">Пароль</label>
+        <label for="password">{{ $t("login.password") }}</label>
         <small class="helper-text invalid" v-if="v$.password.$error">{{
           v$.password.$errors[0].$message
         }}</small>
@@ -30,13 +30,13 @@
     <div class="card-action">
       <div>
         <button class="btn waves-effect waves-light auth-submit" type="submit">
-          Войти
+          {{ $t("login.btnText") }}
           <i class="material-icons right">send</i>
         </button>
       </div>
       <p class="center">
-        Нет аккаунта?
-        <router-link to="/register">Зарегистрироваться</router-link>
+        {{ $t("login.noAccount") }}
+        <router-link to="/register">{{ $t("login.register") }}</router-link>
       </p>
     </div>
   </form>

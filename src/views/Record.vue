@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Новая запись</h3>
+      <h3>{{ $t("newRecord.title") }}</h3>
     </div>
     <Loader v-if="loading" />
     <div v-else-if="!categories.length" class="center">
-      <p>Категорий пока нет</p>
-      <router-link to="/categories">Добавить новую категорию</router-link>
+      <p>{{ $t("common.noCategories") }}</p>
+      <router-link to="/categories">{{ $t("common.addCategory") }}</router-link>
     </div>
     <form v-else class="form" @submit.prevent="onSubmit">
       <div class="input-field">
@@ -19,7 +19,7 @@
             {{ category.title }}
           </option>
         </select>
-        <label>Выберите категорию</label>
+        <label>{{ $t("newRecord.categoryLabel") }}</label>
       </div>
 
       <p>
@@ -31,7 +31,7 @@
             value="income"
             v-model="type"
           />
-          <span>Доход</span>
+          <span>{{ $t("common.income") }}</span>
         </label>
       </p>
 
@@ -44,7 +44,7 @@
             value="outcome"
             v-model="type"
           />
-          <span>Расход</span>
+          <span>{{ $t("common.outcome") }}</span>
         </label>
       </p>
 
@@ -56,7 +56,7 @@
           v-model.number="amount"
           :class="{ invalid: v$.amount.$error }"
         />
-        <label for="amount">Сумма</label>
+        <label for="amount">{{ $t("newRecord.amount") }}</label>
         <small class="helper-text invalid" v-if="v$.amount.$error">{{
           v$.amount.$errors[0].$message
         }}</small>
@@ -69,14 +69,14 @@
           v-model="description"
           :class="{ invalid: v$.description.$error }"
         />
-        <label for="description">Описание</label>
+        <label for="description">{{ $t("newRecord.description") }}</label>
         <small class="helper-text invalid" v-if="v$.description.$error">{{
           v$.description.$errors[0].$message
         }}</small>
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
-        Создать
+        {{ $t("newRecord.btnText") }}
         <i class="material-icons right">send</i>
       </button>
     </form>

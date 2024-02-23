@@ -1,7 +1,7 @@
 <template>
   <div class="center">
     <p>
-      <strong>{{ text || "404 Страница не найдена" }}</strong>
+      <strong>{{ text || $t("common.404") }}</strong>
     </p>
     <img src="../assets/images/404.gif" />
   </div>

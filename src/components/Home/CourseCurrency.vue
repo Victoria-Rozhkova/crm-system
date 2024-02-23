@@ -3,14 +3,14 @@
     <div class="card orange darken-3 bill-card">
       <div class="card-content white-text">
         <div class="card-header">
-          <span class="card-title">Курс валют</span>
+          <span class="card-title">{{ $t("bill.courseCurrency.title") }}</span>
         </div>
         <table>
           <thead>
             <tr>
-              <th>Валюта</th>
-              <th>Курс</th>
-              <th>Дата</th>
+              <th>{{ $t("bill.courseCurrency.currency") }}</th>
+              <th>{{ $t("bill.courseCurrency.course") }}</th>
+              <th>{{ $t("bill.courseCurrency.date") }}</th>
             </tr>
           </thead>
 
@@ -35,9 +35,16 @@ export default {
   data() {
     return { currencies: ["rub", "usd", "eur"] };
   },
+  computed: {
+    locale() {
+      return this.$store.getters.user.locale;
+    },
+  },
   methods: {
     getDate(date) {
-      return getDateFormat(date, "dateshort", { month: "numeric" });
+      return getDateFormat(date, "dateshort", this.locale, {
+        month: "numeric",
+      });
     },
   },
 };

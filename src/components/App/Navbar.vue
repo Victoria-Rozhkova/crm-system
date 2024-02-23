@@ -22,13 +22,15 @@
           <ul id="dropdown" class="dropdown-content">
             <li>
               <router-link to="/profile" class="black-text">
-                <i class="material-icons">account_circle</i>Профиль
+                <i class="material-icons">account_circle</i
+                >{{ $t("navbar.dropdown.profile") }}
               </router-link>
             </li>
             <li class="divider" tabindex="-1"></li>
             <li>
               <a href="#" class="black-text" @click.prevent="logout">
-                <i class="material-icons">assignment_return</i>Выйти
+                <i class="material-icons">assignment_return</i
+                >{{ $t("navbar.dropdown.logout") }}
               </a>
             </li>
           </ul>
@@ -44,7 +46,7 @@ import { getDateFormat } from "@/utils/date";
 export default {
   name: "Navbar",
   data: () => ({
-    date: getDateFormat(new Date(), "datetime"),
+    date: null,
     interval: null,
     dropdown: null,
   }),
@@ -61,7 +63,11 @@ export default {
   },
   mounted() {
     this.interval = setInterval(() => {
-      this.date = getDateFormat(new Date(), "datetime");
+      this.date = getDateFormat(
+        new Date(),
+        "datetime",
+        this.$store.getters.user.locale
+      );
     }, 1000);
     this.dropdown = window.M.Dropdown.init(this.$refs.dropdown, {
       constrainWidth: false,

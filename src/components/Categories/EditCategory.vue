@@ -2,7 +2,7 @@
   <div class="col s12 m6">
     <div>
       <div class="page-subtitle">
-        <h4>Редактировать</h4>
+        <h4>{{ $t("categories.editCategory.title") }}</h4>
       </div>
       <form @submit.prevent="onSubmit">
         <div class="input-field">
@@ -15,7 +15,7 @@
               {{ category.title }}
             </option>
           </select>
-          <label>Выберите категорию</label>
+          <label>{{ $t("categories.editCategory.categoryLabel") }}</label>
         </div>
         <div class="input-field">
           <input
@@ -24,7 +24,7 @@
             v-model="title"
             :class="{ invalid: v$.title.$error }"
           />
-          <label for="title">Название</label>
+          <label for="title">{{ $t("categories.editCategory.name") }}</label>
           <small class="helper-text invalid" v-if="v$.title.$error">{{
             v$.title.$errors[0].$message
           }}</small>
@@ -38,13 +38,13 @@
             v-model.number="limit"
             :class="{ invalid: v$.limit.$error }"
           />
-          <label for="limit">Лимит</label>
+          <label for="limit">{{ $t("categories.editCategory.limit") }}</label>
           <small class="helper-text invalid" v-if="v$.limit.$error">{{
             v$.limit.$errors[0].$message
           }}</small>
         </div>
         <button class="btn waves-effect waves-light" type="submit">
-          Обновить
+          {{ $t("categories.editCategory.btnText") }}
           <i class="material-icons right">send</i>
         </button>
       </form>

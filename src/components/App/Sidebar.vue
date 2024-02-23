@@ -25,14 +25,16 @@ export default {
   props: {
     isOpen: Boolean,
   },
-  data: () => ({
-    links: [
-      { title: "Счет", to: "/" },
-      { title: "История", to: "/history" },
-      { title: "Планирование", to: "/planning" },
-      { title: "Новая запись", to: "/record" },
-      { title: "Категории", to: "/categories" },
-    ],
-  }),
+  computed: {
+    links() {
+      return [
+        { title: this.$t("sidebar.bill"), to: "/" },
+        { title: this.$t("sidebar.history"), to: "/history" },
+        { title: this.$t("sidebar.planning"), to: "/planning" },
+        { title: this.$t("sidebar.newRecord"), to: "/record" },
+        { title: this.$t("sidebar.categories"), to: "/categories" },
+      ];
+    },
+  },
 };
 </script>

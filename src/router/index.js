@@ -31,15 +31,6 @@ const routes = [
       import(/* webpackChunkName: "categories" */ "../views/Categories.vue"),
   },
   {
-    path: "/detail-record",
-    name: "detail-record",
-    meta: { layout: "main", auth: true },
-    component: () =>
-      import(
-        /* webpackChunkName: "detail-record" */ "../views/DetailRecord.vue"
-      ),
-  },
-  {
     path: "/history",
     name: "history",
     meta: { layout: "main", auth: true },

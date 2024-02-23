@@ -1,19 +1,20 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Планирование</h3>
+      <h3>{{ $t("planning.title") }}</h3>
       <h4>{{ getCurrency(user.bill) }}</h4>
     </div>
     <Loading v-if="loading" />
     <div v-else-if="!categories.length" class="center">
-      <p>Категорий пока нет</p>
-      <router-link to="/categories">Добавить новую категорию</router-link>
+      <p>{{ $t("common.noCategories") }}</p>
+      <router-link to="/categories">{{ $t("common.addCategory") }}</router-link>
     </div>
     <section v-else>
       <div v-for="category of categories" :key="category.id">
         <p>
           <strong>{{ category.title }}:</strong>
-          {{ getCurrency(category.spend) }} из {{ getCurrency(category.limit) }}
+          {{ getCurrency(category.spend) }} {{ $t("planning.out") }}
+          {{ getCurrency(category.limit) }}
         </p>
         <div class="progress" v-tooltip="category.tooltipText">
           <div
@@ -61,7 +62,9 @@ export default {
         percent < 60 ? "green" : percent < 100 ? "yellow" : "red";
       const tooltipValue = category.limit - spend;
       const tooltipText = `${
-        tooltipValue < 0 ? "Превышение на" : "Осталось"
+        tooltipValue < 0
+          ? this.$t("planning.tooltipText.excess")
+          : this.$t("planning.tooltipText.left")
       } ${getCurrencyFormat(Math.abs(tooltipValue))}`;
 
       return { ...category, progress, spend, progressColor, tooltipText };

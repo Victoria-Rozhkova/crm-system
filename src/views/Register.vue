@@ -1,7 +1,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="onSubmit">
     <div class="card-content">
-      <span class="card-title">Домашняя бухгалтерия</span>
+      <span class="card-title">{{ $t("register.title") }}</span>
       <div class="input-field">
         <input
           id="email"
@@ -9,7 +9,7 @@
           v-model.trim="email"
           :class="{ invalid: v$.email.$error }"
         />
-        <label for="email">Email</label>
+        <label for="email">{{ $t("register.email") }}</label>
         <small class="helper-text invalid" v-if="v$.email.$error">{{
           v$.email.$errors[0].$message
         }}</small>
@@ -21,7 +21,7 @@
           :class="{ invalid: v$.password.$error }"
           v-model.trim="password"
         />
-        <label for="password">Пароль</label>
+        <label for="password">{{ $t("register.password") }}</label>
         <small class="helper-text invalid" v-if="v$.password.$error">{{
           v$.password.$errors[0].$message
         }}</small>
@@ -30,11 +30,10 @@
         <input
           id="name"
           type="text"
-          class="validate"
           v-model.trim="name"
           :class="{ invalid: v$.name.$error }"
         />
-        <label for="name">Имя</label>
+        <label for="name">{{ $t("register.name") }}</label>
         <small class="helper-text invalid" v-if="v$.name.$error">{{
           v$.name.$errors[0].$message
         }}</small>
@@ -42,7 +41,7 @@
       <p>
         <label>
           <input type="checkbox" v-model="agree" />
-          <span>С правилами согласен</span>
+          <span>{{ $t("register.agree") }}</span>
         </label>
       </p>
       <small class="helper-text invalid" v-if="v$.agree.$error">{{
@@ -52,14 +51,14 @@
     <div class="card-action">
       <div>
         <button class="btn waves-effect waves-light auth-submit" type="submit">
-          Зарегистрироваться
+          {{ $t("register.btnText") }}
           <i class="material-icons right">send</i>
         </button>
       </div>
 
       <p class="center">
-        Уже есть аккаунт?
-        <router-link to="/login">Войти!</router-link>
+        {{ $t("register.haveAccount") }}
+        <router-link to="/login">{{ $t("register.login") }}</router-link>
       </p>
     </div>
   </form>

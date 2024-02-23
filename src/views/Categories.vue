@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Категории</h3>
+      <h3>{{ $t("categories.title") }}</h3>
     </div>
     <section>
       <Loader v-if="loading" />
@@ -13,7 +13,7 @@
           @edit="editCategory"
           :key="categories.length + update"
         />
-        <p v-else class="center">Категорий пока нет</p>
+        <p v-else class="center">{{ $t("common.noCategories") }}</p>
       </div>
     </section>
   </div>
