@@ -37,6 +37,12 @@
 
 ## [Посмотреть Demo ](https://victoria-rozhkova.github.io/crm-system/)
 
+![preview](https://raw.githubusercontent.com/Victoria-Rozhkova/crm-system/preview/home.png)
+
+![preview](https://raw.githubusercontent.com/Victoria-Rozhkova/crm-system/preview/planning.png)
+
+![preview](https://raw.githubusercontent.com/Victoria-Rozhkova/crm-system/preview/chart.png)
+
 ## Первый запуск
 
 ```
