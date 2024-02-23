@@ -35,6 +35,8 @@
 - На странице истории записей можно посмотреть диаграмму расходов по категориям, реализованную с [chart.js](https://www.chartjs.org/) и [vue-chart-3](https://vue-chart-3.netlify.app/), таблицу со всеми записями с пагинацией, сделанной с помощью [vuejs-paginate-next](https://github.com/cloudeep/vuejs-paginate-next#readme) и [миксина](https://github.com/Victoria-Rozhkova/crm-system/blob/master/src/mixins/pagination.mixin.js), а также подробную информацию по каждой записи
 - Реализована локализация на английский язык с [vue-i18n](https://vue-i18n.intlify.dev/)
 
+## [Посмотреть Demo ](https://victoria-rozhkova.github.io/crm-system/)
+
 ## Первый запуск
 
 ```

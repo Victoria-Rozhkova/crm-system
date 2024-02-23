@@ -31,11 +31,11 @@
   },
   "bill": {
     "title": "Bill",
-    "billCurrency": "Account in foreign currency",
+    "billCurrency": "Bill in currencies",
     "courseCurrency": {
-      "title": "Exchange Rates",
+      "title": "Currencies rates",
       "currency": "Currency",
-      "course": "Course",
+      "course": "Rate",
       "date": "Date"
     }
   },
@@ -55,9 +55,9 @@
   },
   "planning": {
     "title": "Planning",
-    "out": "out of",
+    "out": "of",
     "tooltipText": {
-      "excess": "Excess by",
+      "excess": "Excess on",
       "left": "Left"
     }
   },

@@ -2,10 +2,13 @@
   "name": "crm-system",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Victoria-Rozhkova.github.io/crm-system",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@vuelidate/core": "^2.0.0",
@@ -13,6 +16,7 @@
     "chart.js": "^3.9.1",
     "core-js": "^3.6.5",
     "firebase": "^10.8.0",
+    "gh-pages": "^6.1.1",
     "lodash": "^4.17.21",
     "materialize-css": "^1.0.0-rc.2",
     "uuid": "^9.0.1",
